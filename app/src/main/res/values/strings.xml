@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Conversor</string>
+    <string-array name="medidas">
+        <item>Mm</item>
+        <item>Cm</item>
+        <item>M</item>
+        <item>Km</item>
+    </string-array>
+</resources>
