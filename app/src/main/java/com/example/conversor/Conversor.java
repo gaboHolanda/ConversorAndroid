@@ -10,31 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 
 public class Conversor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText valor;
-    TextView saudar, fato;
+    TextView saudar;
     Button converter;
     private Spinner de, para;
     private String valor_de, valor_para;
-
-    private RequestQueue requestQueue;
-    private StringRequest stringRequest;
-    private String url = "https://catfact.ninja/fact";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +33,6 @@ public class Conversor extends AppCompatActivity implements AdapterView.OnItemSe
         de = findViewById(R.id.de);
         para = findViewById(R.id.para);
         saudar = findViewById(R.id.saudar);
-        fato = findViewById(R.id.fato);
 
         valor_de = "Mm";
         valor_para = "Cm";
@@ -63,8 +50,6 @@ public class Conversor extends AppCompatActivity implements AdapterView.OnItemSe
         para.setOnItemSelectedListener(this);
 
         converter = findViewById(R.id.converter);
-
-        getCatFact();
 
         converter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,30 +77,6 @@ public class Conversor extends AppCompatActivity implements AdapterView.OnItemSe
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
-    }
-
-    public void getCatFact(){
-        requestQueue = Volley.newRequestQueue(this);
-        stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                JSONObject json;
-                try {
-                    json = new JSONObject(response);
-                    String res = json.getString("fact");
-                    fato.setText(res);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("Error", "Error :" + error.toString());
-            }
-        });
-        requestQueue.add(stringRequest);
     }
 
     public void calcular(){

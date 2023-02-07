@@ -116,15 +116,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/fato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sim"
-        app:layout_constraintBottom_toTopOf="@+id/valor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.308" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
